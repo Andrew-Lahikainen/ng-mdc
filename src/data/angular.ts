@@ -5,6 +5,6 @@ export const enum Binding {
   TwoWayOptional = '=?',
   String = '@',
   StringOptional = '@?',
-  Expression = '&',
-  ExpressionOptional = '&?'
+  Output = '&',
+  OutputOptional = '&?'
 }
