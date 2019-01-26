@@ -1,6 +1,12 @@
 import { ButtonDirective } from './button.directive';
 
-angular.module('ng.mdc.button', []).directive(ButtonDirective.id, () => ({
+const name: string = 'ng.mdc.button';
+
+angular.module(name, []).directive(ButtonDirective.id, () => ({
   controller: ButtonDirective,
-  restrict: ButtonDirective.restrict
+  restrict: ButtonDirective.restrict,
+  scope: ButtonDirective.bindings,
+  bindToController: true
 }));
+
+export default name;

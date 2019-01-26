@@ -1,6 +1,10 @@
 import { TextFieldComponent } from './text-field.component';
 
-angular.module('ng.mdc.text-field', []).component(TextFieldComponent.id, {
+const name: string = 'ng.mdc.text-field';
+
+angular.module(name, []).component(TextFieldComponent.id, {
   controller: TextFieldComponent,
   bindings: TextFieldComponent.bindings
 });
+
+export default name;
