@@ -1,4 +1,8 @@
 {
   "editor.formatOnSave": true,
-  "editor.tabSize": 2
+  "editor.tabSize": 2,
+  "editor.rulers": [
+    100
+  ],
+  "typescript.tsdk": "node_modules\\typescript\\lib"
 }
