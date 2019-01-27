@@ -48,6 +48,7 @@
   },
   "dependencies": {
     "@material/button": "^0.43.0",
-    "@material/ripple": "^0.43.0"
+    "@material/ripple": "^0.43.0",
+    "@material/typography": "^0.43.0"
   }
 }
