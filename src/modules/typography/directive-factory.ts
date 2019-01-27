@@ -11,10 +11,7 @@ export const getDirectiveFactory: getDirectiveFactory = id => classname => () =>
 
     constructor($element: ng.IRootElementService) {
       this.root = $element[0];
-    }
-
-    $onInit = () => {
       this.root.classList.add(classname);
-    };
+    }
   }
 });
