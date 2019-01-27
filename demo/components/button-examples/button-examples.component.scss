@@ -1,0 +1,9 @@
+button-examples {
+  display: block;
+}
+
+.button-examples__group {
+  [mdc-button]:not(:last-child) {
+    margin-right: 24px;
+  }
+}

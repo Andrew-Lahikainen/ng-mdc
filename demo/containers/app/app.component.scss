@@ -3,3 +3,15 @@ app-container {
   flex-direction: row;
   height: 100%;
 }
+
+.app-container__content {
+  display: flex;
+  flex: 1 1 auto;
+  overflow: auto;
+
+  & > * {
+    flex: 1 1 auto;
+    max-width: 760px;
+    margin: 0 auto;
+  }
+}
