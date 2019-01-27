@@ -8,7 +8,7 @@ import { MarkedOptions } from 'marked';
 const config: Configuration = {
   mode: 'development',
 
-  entry: resolve(__dirname, 'demo', 'index.ts'),
+  entry: resolve(__dirname, 'docs', 'index.ts'),
 
   output: {
     filename: '[name].[hash].js',
@@ -33,7 +33,7 @@ const config: Configuration = {
   plugins: [
     new HtmlWebpackPlugin({
       filename: 'index.html',
-      template: resolve(__dirname, 'demo', 'index.html')
+      template: resolve(__dirname, 'docs', 'index.html')
     })
   ],
 
