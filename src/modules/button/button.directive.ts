@@ -1,6 +1,7 @@
 import { MDCRipple } from '@material/ripple';
 import '@material/button/mdc-button';
 import { Binding } from 'data/angular';
+import { CssClass as ThemeCssClass } from 'modules/theme';
 
 interface Bindings {
   raised?: boolean;
@@ -8,6 +9,8 @@ interface Bindings {
   outlined?: boolean;
   dense?: boolean;
   ripple?: boolean;
+  secondary?: boolean;
+  primary?: boolean;
 }
 
 interface Changes extends ng.IOnChangesObject {
@@ -16,12 +19,14 @@ interface Changes extends ng.IOnChangesObject {
   outlined: ng.IChangesObject<boolean>;
   dense: ng.IChangesObject<boolean>;
   ripple: ng.IChangesObject<boolean>;
+  secondary: ng.IChangesObject<boolean>;
+  primary: ng.IChangesObject<boolean>;
 }
 
 const enum CssClass {
   Root = 'mdc-button',
   Raised = 'mdc-button--raised',
-  Unelevated = 'mdc-button--Unelevated',
+  Unelevated = 'mdc-button--unelevated',
   Outlined = 'mdc-button--outlined',
   Dense = 'mdc-button--dense',
   Label = 'mdc-button__label',
@@ -37,7 +42,9 @@ export class ButtonDirective implements ng.IController, Bindings {
     unelevated: Binding.OneWayOptional,
     outlined: Binding.OneWayOptional,
     dense: Binding.OneWayOptional,
-    ripple: Binding.OneWayOptional
+    ripple: Binding.OneWayOptional,
+    primary: Binding.OneWayOptional,
+    secondary: Binding.OneWayOptional
   };
 
   // Bindings:
@@ -46,6 +53,8 @@ export class ButtonDirective implements ng.IController, Bindings {
   outlined?: boolean;
   dense?: boolean;
   ripple?: boolean;
+  primary?: boolean;
+  secondary?: boolean;
 
   root: HTMLButtonElement | HTMLAnchorElement;
   mdcRipple?: MDCRipple;
@@ -58,7 +67,7 @@ export class ButtonDirective implements ng.IController, Bindings {
     this.root = $element[0] as HTMLButtonElement | HTMLAnchorElement;
 
     if (this.root.tagName !== 'BUTTON' && this.root.tagName !== 'A') {
-      throw new Error('mdc-button directive should be used on a <button> or <a> tag');
+      throw new Error('mdc-button directive can only be used on a <button> or <a> tag');
     }
   }
 
@@ -69,6 +78,14 @@ export class ButtonDirective implements ng.IController, Bindings {
 
     if (this.ripple) {
       this.mdcRipple = new MDCRipple(this.root);
+    }
+
+    if (this.primary && this.secondary) {
+      this.$log.warn(
+        `mdc-button directive has both primary and secondary attributes enabled.
+        You should remove one of these attributes.`,
+        this.root
+      );
     }
   };
 
@@ -84,6 +101,12 @@ export class ButtonDirective implements ng.IController, Bindings {
     }
     if (changes.unelevated) {
       this.root.classList.toggle(CssClass.Unelevated, this.unelevated);
+    }
+    if (changes.primary) {
+      this.root.classList.toggle(ThemeCssClass.PrimaryBackground, this.primary);
+    }
+    if (changes.secondary) {
+      this.root.classList.toggle(ThemeCssClass.SecondaryBackground, this.secondary);
     }
   };
 
@@ -110,6 +133,9 @@ export class ButtonDirective implements ng.IController, Bindings {
   setDefaults = () => {
     if (this.ripple === undefined) {
       this.ripple = true;
+    }
+    if (this.primary === undefined) {
+      this.primary = true;
     }
   };
 }
