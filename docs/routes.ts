@@ -3,6 +3,7 @@ import { AppContainer } from './containers/app/app.component';
 import { ButtonPageContainer } from './containers/button-page/button-page.component';
 import { ButtonExamplesComponent } from './components/button-examples/button-examples.component';
 import { HtmlCompilerComponent } from './components/html-compiler/html-compiler.component';
+import buttonDocs from './markdown/button.md';
 
 const enum StateName {
   App = 'app',
@@ -34,7 +35,10 @@ const ButtonDocs: Ng1StateDeclaration = {
   name: StateName.ButtonDocs,
   parent: StateName.Button,
   component: HtmlCompilerComponent.id,
-  url: '/docs'
+  url: '/docs',
+  resolve: {
+    html: () => buttonDocs
+  }
 };
 
 const StateDeclarations: Ng1StateDeclaration[] = [App, Button, ButtonExamples, ButtonDocs];
