@@ -2,6 +2,8 @@ import { Configuration } from 'webpack';
 import { resolve } from 'path';
 import autoprefixer from 'autoprefixer';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
+import { CustomRenderer } from './markdown.config';
+import { MarkedOptions } from 'marked';
 
 const config: Configuration = {
   mode: 'development',
@@ -59,6 +61,19 @@ const config: Configuration = {
       {
         test: /\.html$/,
         use: [{ loader: 'html-loader?exportAsEs6Default' }]
+      },
+      {
+        test: /\.md$/,
+        use: [
+          { loader: 'html-loader' },
+          {
+            loader: 'markdown-loader',
+            options: {
+              gfm: true,
+              renderer: CustomRenderer
+            } as MarkedOptions
+          }
+        ]
       }
     ]
   }
