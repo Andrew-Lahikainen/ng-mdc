@@ -1,7 +1,7 @@
 import { AppNavDrawerContainer } from './app-nav-drawer.component';
-import { IComponent } from '../../component';
+import { IdComponent } from '../../id-component';
 
-const component: IComponent = {
+const component: IdComponent = {
   id: AppNavDrawerContainer.id,
   controller: AppNavDrawerContainer,
   template: AppNavDrawerContainer.template

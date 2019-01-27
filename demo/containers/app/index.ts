@@ -1,7 +1,7 @@
 import { AppContainer } from './app.component';
-import { IComponent } from '../../component';
+import { IdComponent } from '../../id-component';
 
-const component: IComponent = {
+const component: IdComponent = {
   id: AppContainer.id,
   controller: AppContainer,
   template: AppContainer.template

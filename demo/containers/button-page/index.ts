@@ -1,7 +1,7 @@
 import { ButtonPageContainer } from './button-page.component';
-import { IComponent } from '../../component';
+import { IdComponent } from '../../id-component';
 
-const component: IComponent = {
+const component: IdComponent = {
   id: ButtonPageContainer.id,
   controller: ButtonPageContainer,
   template: ButtonPageContainer.template

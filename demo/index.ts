@@ -4,6 +4,7 @@ import ngMdc from '../src/modules';
 
 import './index.scss';
 import buttonExamples from './components/button-examples';
+import htmlCompiler from './components/html-compiler';
 import appContainer from './containers/app';
 import appNavDrawer from './containers/app-nav-drawer';
 import buttonPage from './containers/button-page';
@@ -14,6 +15,7 @@ angular
   .module('app', [uirouter, ngMdc])
   .config(RegisterAppRoutes)
   .config(ConfigureForProduction)
+  .component(htmlCompiler.id, htmlCompiler)
   .component(buttonExamples.id, buttonExamples)
   .component(appContainer.id, appContainer)
   .component(appNavDrawer.id, appNavDrawer)

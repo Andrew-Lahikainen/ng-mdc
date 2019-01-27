@@ -1,7 +1,7 @@
 import { ButtonExamplesComponent } from './button-examples.component';
-import { IComponent } from '../../component';
+import { IdComponent } from '../../id-component';
 
-const component: IComponent = {
+const component: IdComponent = {
   id: ButtonExamplesComponent.id,
   controller: ButtonExamplesComponent,
   template: ButtonExamplesComponent.template

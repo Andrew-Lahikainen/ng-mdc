@@ -2,26 +2,42 @@ import { StateProvider, Ng1StateDeclaration, UrlRouterProvider } from '@uirouter
 import { AppContainer } from './containers/app/app.component';
 import { ButtonPageContainer } from './containers/button-page/button-page.component';
 import { ButtonExamplesComponent } from './components/button-examples/button-examples.component';
+import { HtmlCompilerComponent } from './components/html-compiler/html-compiler.component';
+
+const enum StateName {
+  App = 'app',
+  Button = 'button',
+  ButtonDocs = 'buttonDocs',
+  ButtonExamples = 'buttonExamples'
+}
 
 const App: Ng1StateDeclaration = {
-  name: 'app',
+  name: StateName.App,
   component: AppContainer.id
 };
 
 const Button: Ng1StateDeclaration = {
-  name: 'button',
+  name: StateName.Button,
   component: ButtonPageContainer.id,
+  redirectTo: StateName.ButtonDocs,
   url: '/buttons'
 };
 
 const ButtonExamples: Ng1StateDeclaration = {
-  name: 'buttonExamples',
-  parent: Button.name,
+  name: StateName.ButtonExamples,
+  parent: StateName.Button,
   component: ButtonExamplesComponent.id,
   url: '/examples'
 };
 
-const StateDeclarations: Ng1StateDeclaration[] = [App, Button, ButtonExamples];
+const ButtonDocs: Ng1StateDeclaration = {
+  name: StateName.ButtonDocs,
+  parent: StateName.Button,
+  component: HtmlCompilerComponent.id,
+  url: '/docs'
+};
+
+const StateDeclarations: Ng1StateDeclaration[] = [App, Button, ButtonExamples, ButtonDocs];
 
 export const RegisterAppRoutes = (
   $locationProvider: ng.ILocationProvider,
