@@ -1,5 +1,5 @@
 import { MDCRipple } from '@material/ripple';
-import '@material/button/mdc-button';
+import '@material/button/mdc-button.scss';
 import { Binding } from 'data/angular';
 import { CssClass as ThemeCssClass } from 'modules/theme';
 
@@ -23,7 +23,7 @@ interface Changes extends ng.IOnChangesObject {
   primary: ng.IChangesObject<boolean>;
 }
 
-const enum CssClass {
+export const enum CssClass {
   Root = 'mdc-button',
   Raised = 'mdc-button--raised',
   Unelevated = 'mdc-button--unelevated',
