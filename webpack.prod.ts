@@ -10,6 +10,7 @@ const config: Configuration = {
   mode: 'production',
 
   entry: {
+    button: resolve(__dirname, 'src', 'modules', 'button', 'index.ts'),
     textField: resolve(__dirname, 'src', 'modules', 'text-field', 'index.ts')
   },
 
@@ -54,15 +55,10 @@ const config: Configuration = {
       },
       {
         test: /\.scss$/,
-        include: resolve(__dirname, 'src'),
+        include: [resolve(__dirname, 'src'), resolve(__dirname, 'node_modules')],
         use: [
-          {
-            loader: MiniCssExtractPlugin.loader as string
-          },
-          {
-            loader: 'css-loader',
-            options: { minimize: true }
-          },
+          { loader: MiniCssExtractPlugin.loader as string },
+          { loader: 'css-loader' },
           {
             loader: 'postcss-loader',
             options: { plugins: () => [autoprefixer()] }
