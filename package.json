@@ -6,7 +6,9 @@
   "scripts": {
     "start": "env-cmd development webpack-dev-server --config webpack.dev.ts",
     "build": "env-cmd production webpack --config webpack.prod.ts",
-    "test": "jest"
+    "test": "jest",
+    "test:w": "jest --watch",
+    "test:w:all": "jest --watchAll"
   },
   "author": "Andrew Lahikainen",
   "license": "MIT",
