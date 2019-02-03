@@ -1,9 +1,8 @@
 import { MDCRipple } from '@material/ripple';
-import '@material/button/mdc-button.scss';
+import './button.scss';
 import { Binding } from 'data/angular';
-import { CssClass as ThemeCssClass } from 'modules/theme';
 
-interface Bindings {
+export interface Bindings {
   raised?: boolean;
   unelevated?: boolean;
   outlined?: boolean;
@@ -30,7 +29,9 @@ export const enum CssClass {
   Outlined = 'mdc-button--outlined',
   Dense = 'mdc-button--dense',
   Label = 'mdc-button__label',
-  Icon = 'mdc-button__icon'
+  Icon = 'mdc-button__icon',
+  Primary = 'ngmdc-button--primary',
+  Secondary = 'ngmdc-button--secondary'
 }
 
 export class ButtonDirective implements ng.IController, Bindings {
@@ -82,8 +83,7 @@ export class ButtonDirective implements ng.IController, Bindings {
 
     if (this.primary && this.secondary) {
       this.$log.warn(
-        `mdc-button directive has both primary and secondary attributes enabled.
-        You should remove one of these attributes.`,
+        `mdc-button directive has both primary and secondary attributes enabled.`,
         this.root
       );
     }
@@ -103,10 +103,10 @@ export class ButtonDirective implements ng.IController, Bindings {
       this.root.classList.toggle(CssClass.Unelevated, this.unelevated);
     }
     if (changes.primary) {
-      this.root.classList.toggle(ThemeCssClass.PrimaryBackground, this.primary);
+      this.root.classList.toggle(CssClass.Primary, this.primary);
     }
     if (changes.secondary) {
-      this.root.classList.toggle(ThemeCssClass.SecondaryBackground, this.secondary);
+      this.root.classList.toggle(CssClass.Secondary, this.secondary);
     }
   };
 
@@ -134,7 +134,7 @@ export class ButtonDirective implements ng.IController, Bindings {
     if (this.ripple === undefined) {
       this.ripple = true;
     }
-    if (this.primary === undefined) {
+    if (this.secondary === undefined && this.primary === undefined) {
       this.primary = true;
     }
   };

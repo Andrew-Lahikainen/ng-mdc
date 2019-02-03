@@ -1,0 +1,25 @@
+@import '~@material/button/mdc-button.scss';
+@import '~@material/button/mixins';
+@import '~@material/theme/variables';
+
+.ngmdc-button--primary {
+  &.mdc-button--raised {
+    @include mdc-button-filled-accessible($mdc-theme-primary);
+  }
+
+  &.mdc-button--outlined {
+    @include mdc-button-outline-color($mdc-theme-primary);
+    color: $mdc-theme-primary;
+  }
+}
+
+.ngmdc-button--secondary {
+  &.mdc-button--raised {
+    @include mdc-button-filled-accessible($mdc-theme-secondary);
+  }
+
+  &.mdc-button--outlined {
+    @include mdc-button-outline-color($mdc-theme-secondary);
+    color: $mdc-theme-secondary;
+  }
+}

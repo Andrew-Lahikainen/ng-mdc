@@ -1,4 +1,4 @@
-import '@material/theme';
+import '@material/theme/mdc-theme.scss';
 
 export const enum CssClass {
   Primary = 'mdc-theme--primary',
